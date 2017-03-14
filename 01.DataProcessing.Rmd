@@ -12,15 +12,20 @@ output: html_document
 #### Define folder and file names for use later
 
 * rootfolder: directory from which you'll pull data and write results
-* ssdat: filename (with path extension) of csv with SS information
-* intdat: filename (with path and extension) of csv where SS were intersected with environmental correlates 
+* ssdat: filename (with path and extension) of csv with SS information
+* cofipts: filename (with path and extension) of csv where SS were intersected with the BC VRI-based shapefile of forest attributes (for nicole's migratory bird matrix work)
+* **Other intersection files can be added here**
 
 ``` {r setup, echo=F, message=F, warning=F}
 require(knitr)
 rootfolder <- '../COFI.MBMatrix'
-ssdat <- 
-indat <- "data/Intersections/BBS_BAM_Atlas_MigLayer_Jan22_2017-zSpGroup.csv"
 opts_knit$set(root.dir = rootfolder)
+
+``` {r set.filenames, echo=T}
+ssdat <- 
+cofipts <- "data/Intersections/BBS_BAM_Atlas_MigLayer_Jan22_2017-zSpGroup-stnID.csv"
+lccpts <- 
+
 ```
 
 #### Load required packages
@@ -33,7 +38,7 @@ library(QPAD) # not available from CRAN. If want to use it, must get from Peter.
 
 ### Load Data Tables
 
-#### SS (site location) Table
+#### Base SS (site location) Table
 
 * SS
 * SSID (unique id based on coordinates, created elsewhere by Nicole)
@@ -43,6 +48,32 @@ library(QPAD) # not available from CRAN. If want to use it, must get from Peter.
 * XY
 
 ``` {r}
-tmp <- read.csv(indat, header=T)
+
+
+```
+
+#### Covariate intersection tables
+
+Moving forward... I think all pre-processing of each table (reclassing, etc) should be done done elsewhere. Or possibly in a script that is sourced below. 
+
+Each chunk below corresponds to a table. If you want to load a specific covariate, switch eval=F to eval=T. Otherwise leave it as is. 
+
+I (Nicole) only have one intersection table for now. 
+
+##### COFI (N.Barker migratory bird matrix collab)
+``` {r load.cofi.table}
+tmp <- read.csv(cofipts, header=T)
+```
+
+
+##### Land Cover of Canada 2005
+
+``` {r load.lcc, eval=F}
+
+```
+
+##### North American Land Cover
+
+``` {r load.nalc, eval=F}
 
 ```
