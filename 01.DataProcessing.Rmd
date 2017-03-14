@@ -1,0 +1,48 @@
+---
+title: "Pre-Processing BAM Data"
+author: "Date created: March 13, 2017"
+date: "Last updated on: March 14, 2017"
+output: html_document
+---
+
+## File adapated from psolymos' [dataprocessing.R script](https://github.com/psolymos/bamanalytics/blob/master/R/dataprocessing.R)
+
+### Preliminaries
+
+#### Define folder and file names for use later
+
+* rootfolder: directory from which you'll pull data and write results
+* ssdat: filename (with path extension) of csv with SS information
+* intdat: filename (with path and extension) of csv where SS were intersected with environmental correlates 
+
+``` {r setup, echo=F, message=F, warning=F}
+require(knitr)
+rootfolder <- '../COFI.MBMatrix'
+ssdat <- 
+indat <- "data/Intersections/BBS_BAM_Atlas_MigLayer_Jan22_2017-zSpGroup.csv"
+opts_knit$set(root.dir = rootfolder)
+```
+
+#### Load required packages
+``` {r}
+library(mefa4)
+library(RODBC)
+library(maptools)
+library(QPAD) # not available from CRAN. If want to use it, must get from Peter. 
+```
+
+### Load Data Tables
+
+#### SS (site location) Table
+
+* SS
+* SSID (unique id based on coordinates, created elsewhere by Nicole)
+* Time Zone
+* BCR
+* Jurisdiction
+* XY
+
+``` {r}
+tmp <- read.csv(indat, header=T)
+
+```
