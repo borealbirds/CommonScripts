@@ -1,0 +1,12 @@
+library(RODBC) 
+
+#First establish the ODBC connection; insert your own username and password or enter when prompted
+cn <- odbcDriverConnect(connection="Driver={ODBC Driver 13 for SQL Server};server=boreal.biology.ualberta.ca;trusted_connection=no; UID=userid; PWD=pwd;")
+
+#Import tables into R; these particular tables are not up to date and will probably change names
+PKEY <- sqlFetch(cn, 'dbo.National_PKEY_V4_2015')
+PC <- sqlFetch(cn, 'dbo.National_PtCount_V4_2015')
+XY <- sqlFetch(cn, 'dbo.National_XY_V4_2015')
+Proj <- sqlFetch(cn, 'dbo.National_Proj_Summary_V4_2015')
+Cov <- sqlFetch(cn, 'dbo.NATIONAL_XY_Covariates_Peter')
+BAMBBS <- sqlFetch(cn, 'dbo.BBSBAM_V4_XY_FILTER')
