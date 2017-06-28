@@ -3,6 +3,10 @@ library(RODBC)
 #First establish the ODBC connection; insert your own username and password or enter when prompted
 cn <- odbcDriverConnect(connection="Driver={ODBC Driver 13 for SQL Server};server=boreal.biology.ualberta.ca;trusted_connection=no; UID=userid; PWD=pwd;")
 
+#Here is another option:
+cn <- odbcConnect(dsn="BOREAL",uid = "userid", pwd = "pwd") # where BOREAL is the name of the data source (this can be verified using the ODBC Data Source Administrator in Windows)
+
+
 #Import tables into R; these particular tables are not up to date and will probably change names
 PKEY <- sqlFetch(cn, 'dbo.National_PKEY_V4_2015')
 PC <- sqlFetch(cn, 'dbo.National_PtCount_V4_2015')
