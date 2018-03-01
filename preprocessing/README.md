@@ -1,5 +1,27 @@
-# BAM Pre-processing Scripts 
+BAM Pre-processing Roadmap
+------------
 
-Scripts for BAM team members to use to pre-process data from the Avian and Biophsyical databases before using in analyses
+How to get from raw data to a dataset ready for analysis. 
 
-1. Filtering out undesired behaviour codes, durations, etc. 
+# Dataset Structure
+
+## Tables
+
+1. proj_summary
+2. SS
+3. PKEY
+4. PCDAT
+
+## Fields (by table)
+
+### proj_summary
+
+
+### SS
+
+
+### PKEY
+
+
+### PCDAT
+
